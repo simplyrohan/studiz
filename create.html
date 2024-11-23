@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Flashcards</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="create.css">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/vanjs-org/van/public/van-1.5.2.nomodule.min.js"
+        defer></script>
+    <script src="create.js" defer></script>
+</head>
+
+<body>
+    <form class="set-form" id="set-form">
+        <h1>Create Flashcard Set</h1>
+        <input type="text" name="set-title" id="set-title" class="text-entry set-title"
+            placeholder="Flashcard set title">
+        <!-- <input type="text" name="set-description" id="set-description" class="text-entry set-despriction" placeholder="Flashcard set description">  -->
+        <textarea name="set-description" id="set-description" class="text-entry set-description"
+            placeholder="Flashcard set description"></textarea>
+        <span class="tools">
+            <button class="secondary" id="add-card">Add Card</button>
+            <button class="primary" id="finish-set">Finish Set</button>
+        </span>
+        <hr class="set-divider">
+        <div class="flashcards" id="flashcards">
+        </div>
+    </form>
+
+</body>
+
+</html>

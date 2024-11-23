@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.info {
+    margin: 2rem;
+}
+
+.flashcards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    
+
+    .final-card {
+
+        .flashcard {
+            background-color: var(--secondary-900);
+            width: 30rem;
+            height: 20rem;
+
+            font-size: 1rem;
+
+            font-weight: 500;
+
+            border-radius: 1rem;
+
+            padding: 1.5rem;
+
+
+            .side {
+                position: fixed;
+
+                width: 30rem;
+                height: 20rem;
+
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                background-color: var(--secondary-900);
+                border-radius: 1rem;
+
+
+                &.front {
+
+                    z-index: 1;
+                }
+
+                &.back {
+
+                    transform: perspective(200rem) rotateX(180deg);
+
+                    z-index: -1;
+                }
+            }
+
+
+        }
+
+        .flashcard-active {
+            animation: flashcard-flip-forward 0.2s forwards;
+
+            .back {
+                animation: side-flip-forward 0.2s forwards;
+            }
+        }
+
+        .flashcard-deactive {
+            animation: flashcard-flip-backward 0.2s forwards;
+
+            .back {
+                animation: side-flip-backward 0.2s forwards;
+            }
+        }
+
+    }
+
+}
+
+
+@keyframes flashcard-flip-forward {
+    0% {
+        transform: perspective(100rem) rotateX(0deg);
+    }
+
+    100% {
+        transform: perspective(100rem) rotateX(180deg);
+    }
+}
+
+@keyframes side-flip-forward {
+    0% {
+        z-index: -1;
+    }
+
+    50% {
+        z-index: 2;
+    }
+
+    100% {
+        z-index: 2;
+    }
+
+}
+
+@keyframes flashcard-flip-backward {
+    0% {
+        transform: perspective(100rem) rotateX(180deg);
+    }
+
+    100% {
+        transform: perspective(100rem) rotateX(360deg);
+    }
+}
+
+@keyframes side-flip-backward {
+    0% {
+        z-index: 2;
+    }
+
+    50% {
+        z-index: -1;
+    }
+
+    100% {
+        z-index: -1;
+    }
+
+}
