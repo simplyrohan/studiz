@@ -1,17 +1,20 @@
 const { dom, div, span, textarea, button, img, h1 } = van.tags
 
+// Elements
 flashcards = document.getElementById('flashcards');
 addCard = document.getElementById('add-card');
 finishSet = document.getElementById('finish-set');
 setTitle = document.getElementById('set-title');
 setDescription = document.getElementById('set-description');
 
+// Data
 flashcardData = {
     'title': '',
     'description': '',
     'flashcards': []
 }
 
+// Utility functions
 function getChildIndex(element) {
     let index = 0;
     while (element.previousElementSibling) {
@@ -21,6 +24,7 @@ function getChildIndex(element) {
     return index;
 }
 
+// Data functions
 function addFlashcard(card, index = -1) {
 
     let term = card.querySelector('.flashcard-term').value
@@ -35,20 +39,7 @@ function addFlashcard(card, index = -1) {
     console.log(flashcardData)
 }
 
-function finish(e) {
-    e.preventDefault()
-
-    flashcardData.title = setTitle.value
-    flashcardData.description = setDescription.value
-    console.log(flashcardData);
-
-    window.location.href = '/practice.html?flashcardset=' + btoa(JSON.stringify(flashcardData))
-
-}
-finishSet.addEventListener('click', finish)
-
-addCard.addEventListener('click', function (e) {
-    e.preventDefault();
+function createCard(term, def) {
 
     let saved = false
 
@@ -65,7 +56,8 @@ addCard.addEventListener('click', function (e) {
                 // replace the current flashcard with a new one
                 save()
             }
-        }
+        },
+        term
     );
     let flashcardDef = textarea(
         {
@@ -73,7 +65,8 @@ addCard.addEventListener('click', function (e) {
                 // replace the current flashcard with a new one
                 save()
             }
-        }
+        },
+        def
     )
 
     let trashButton = button(
@@ -104,6 +97,39 @@ addCard.addEventListener('click', function (e) {
     )
 
     flashcards.appendChild(flashcard)
+    
+    return flashcard
+}
 
-    addFlashcard(flashcard)
+// Event listeners
+finishSet.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    flashcardData.title = setTitle.value
+    flashcardData.description = setDescription.value
+    console.log(flashcardData);
+
+    window.location.href = '/practice.html?flashcardset=' + btoa(JSON.stringify(flashcardData))
+
 })
+
+addCard.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    addFlashcard(createCard('', ''))
+})
+
+// Load editor
+const urlParams = new URLSearchParams(window.location.search);
+
+if (urlParams.has('flashcardset')) {
+    flashcardset = urlParams.get('flashcardset');
+    flashcardData = JSON.parse(atob(flashcardset));
+
+    setTitle.value = flashcardData.title
+    setDescription.value = flashcardData.description
+
+    flashcardData.flashcards.forEach(card => {
+        createCard(card.term, card.def)
+    })
+}
