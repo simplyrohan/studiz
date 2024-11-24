@@ -55,11 +55,7 @@ addCard.addEventListener('click', function (e) {
     function save() {
         console.log('saving')
         let i = getChildIndex(flashcard)
-        // flashcardData.flashcards.pop(i)
-        console.log(i)
-        console.log(JSON.stringify(flashcardData, null, 2))
         flashcardData.flashcards.splice(i, 1)
-        console.log(JSON.stringify(flashcardData, null, 2))
         addFlashcard(flashcard, i)
     }
 
@@ -93,25 +89,6 @@ addCard.addEventListener('click', function (e) {
             { src: 'icons/trash.svg' }
         )
     )
-    // let addButton = button(
-    //     {
-    //         class: 'secondary plus', onclick: (e) => {
-    //             e.preventDefault();
-    //             // replace the current flashcard with a new one
-    //             flashcardData.flashcards.pop(getChildIndex(flashcard))
-    //             addFlashcard(flashcard)
-
-    //             saved = true;
-
-    //             // replace the first child with a checkmark
-
-    //             addButton.firstChild.src = 'icons/check.svg'
-    //         },
-    //     },
-    //     img(
-    //         { src: 'icons/plus.svg' }
-    //     )
-    // )
 
     let flashcard = div(
         { class: 'flashcard' },

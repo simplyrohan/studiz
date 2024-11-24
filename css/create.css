@@ -94,10 +94,6 @@ body {
                         &.trash {
                             background-color: red;
                         }
-
-                        &.plus {
-                            background-color: var(--primary-600);
-                        }
                     }
                 }
             }
