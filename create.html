@@ -15,20 +15,28 @@
 </head>
 
 <body>
-    <form action="javascript: submit()" class="set-form" id="set-form">
-        <h1>Create Flashcards</h1>
-        <input type="text" title="test" name="set-title" id="set-title" class="text-entry set-title"
-            placeholder="Flashcard set title" required />
-        <textarea name="set-description" id="set-description" class="text-entry set-description"
-            placeholder="Flashcard set description"></textarea>
-        <span class="tools">
-            <button class="secondary" id="add-card">Add Card</button>
-            <input type="submit" class="primary" id="finish-set" value="Create Set"></button>
-        </span>
-        <hr class="set-divider">
-        <div class="flashcards" id="flashcards">
-        </div>
-    </form>
+    <nav>
+        <h2>Studiz</h2>
+        <span><a href="/create.html">Create Flashcards</a></span>
+    </nav>
+    <main>
+
+        <form action="javascript: submit()" class="set-form" id="set-form">
+            <h1>Create Flashcards</h1>
+            <input type="text" title="test" name="set-title" id="set-title" class="text-entry set-title"
+                placeholder="Flashcard set title" required />
+            <textarea name="set-description" id="set-description" class="text-entry set-description"
+                placeholder="Flashcard set description"></textarea>
+            <span class="tools">
+                <button class="secondary" id="add-card">Add Card</button>
+                <!-- <input type="submit" class="primary" id="finish-set" value="Finish Set"></button> -->
+                <button class="primary" id="finish-set">Finish Set</button>
+            </span>
+            <hr class="set-divider">
+            <div class="flashcards" id="flashcards">
+            </div>
+        </form>
+    </main>
 
 </body>
 
