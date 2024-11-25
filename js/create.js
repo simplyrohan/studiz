@@ -102,16 +102,17 @@ function createCard(term, def) {
 }
 
 // Event listeners
-finishSet.addEventListener('click', (e) => {
-    e.preventDefault()
+// finishSet.addEventListener('click', (e) => {
+function submit(e) {
+    // e.preventDefault() 
 
     flashcardData.title = setTitle.value
     flashcardData.description = setDescription.value
     console.log(flashcardData);
 
     window.location.href = '/practice.html?flashcardset=' + btoa(JSON.stringify(flashcardData))
-
-})
+}
+// })
 
 addCard.addEventListener('click', function (e) {
     e.preventDefault();

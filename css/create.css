@@ -2,21 +2,20 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+
+    align-items: center;    
+    justify-content: flex-start;
+
+    padding-top: 2rem;
 }
 
 
 .set-form {
-    margin: 2rem;
-    max-width: 75vw;
+    width: 95vw;
 
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
-
-    .text-entry {
-        /* min-width: 20rem; */
-        max-width: 90vw;
-    }
 
     .set-description {
         resize: none;
