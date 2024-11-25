@@ -144,6 +144,16 @@ button, input[type="submit"] {
     }
 }
 
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 1rem;
+
+    border-bottom: 1px solid var(--text-500);
+}
+
 /* General styles */
 a {
     color: inherit;
