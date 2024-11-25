@@ -14,6 +14,8 @@ flashcardData = {
     'flashcards': []
 }
 
+
+
 // Utility functions
 function getChildIndex(element) {
     let index = 0;
@@ -97,7 +99,7 @@ function createCard(term, def) {
     )
 
     flashcards.appendChild(flashcard)
-    
+
     return flashcard
 }
 
@@ -110,6 +112,7 @@ function submit(e) {
     flashcardData.description = setDescription.value
     console.log(flashcardData);
 
+    window.onbeforeunload = null;
     window.location.href = '/practice.html?flashcardset=' + btoa(JSON.stringify(flashcardData))
 }
 // })
@@ -133,4 +136,9 @@ if (urlParams.has('flashcardset')) {
     flashcardData.flashcards.forEach(card => {
         createCard(card.term, card.def)
     })
+}
+
+
+window.onbeforeunload = function () {
+        return "Changes you made will not be saved.";
 }
